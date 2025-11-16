@@ -1,6 +1,11 @@
-import { useState, useRef , useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { validateForm } from "../utils/Validation";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const AuthPage = ({ mode }) => {
   const isSignIn = mode === "signIn";
@@ -10,12 +15,12 @@ const AuthPage = ({ mode }) => {
   const [errorMessage, setErrorMessage] = useState({});
 
   useEffect(() => {
-  setErrorMessage({}); 
+    setErrorMessage({});
 
-  if (name.current) name.current.value = "";
-  if (email.current) email.current.value = "";
-  if (password.current) password.current.value = "";
-}, [mode]);
+    if (name.current) name.current.value = "";
+    if (email.current) email.current.value = "";
+    if (password.current) password.current.value = "";
+  }, [mode]);
 
   const handleButtonClick = (e) => {
     e.preventDefault();
@@ -26,6 +31,44 @@ const AuthPage = ({ mode }) => {
       password: password.current.value,
     });
     setErrorMessage(error);
+
+    if (Object.keys(error).length > 0) return;
+
+    if (!isSignIn) {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessageText = error.message;
+        setErrorMessage((prev) => ({
+            ...prev,
+            firebase: errorCode + " - " + errorMessageText.replace("Firebase:", "").trim(),
+          }));
+        });
+    } else {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessageText = error.message;
+        setErrorMessage((prev) => ({
+            ...prev,
+            firebase: errorCode + " - " + errorMessageText.replace("Firebase:", "").trim(),
+          }));
+        });
+    }
   };
 
   return (
@@ -71,16 +114,24 @@ const AuthPage = ({ mode }) => {
             className="p-2.5 rounded bg-gray-800/70 outline-none focus:ring-2 focus:ring-red-500"
           />
           {errorMessage.password && (
-            <p className="text-red-500 text-bold mt-1">{errorMessage.password}</p>
+            <p className="text-red-500 text-bold mt-1">
+              {errorMessage.password}
+            </p>
           )}
         </div>
 
-        <button
-          type="submit"
-          className="bg-red-600 hover:bg-red-700 transition p-2 rounded font-semibold cursor-pointer"
-        >
-          {isSignIn ? "Sign In" : "Sign Up"}
-        </button>
+        <div className="flex flex-col">
+          <button
+            type="submit"
+            className="bg-red-600 hover:bg-red-700 transition p-2 rounded font-semibold cursor-pointer"
+          >
+            {isSignIn ? "Sign In" : "Sign Up"}
+          </button>
+          {errorMessage.firebase && (
+            <p className="text-red-500 text-bold mt-1">{errorMessage.firebase}</p>
+          )}
+        </div>
+
         {isSignIn ? (
           <p>
             Already have an account ? <Link to="/signUp">Sign Up</Link>
