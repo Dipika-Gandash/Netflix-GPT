@@ -15,20 +15,25 @@ const Router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/browse",
-        element: <Browse />
-      },
-      {
         path: "/signIn",
-        element: <AuthPage mode="signIn" />
+        element: <AuthPage mode="signIn" />,
       },
       {
         path: "/signUp",
-        element: <AuthPage mode="signUp" />
-      }
+        element: <AuthPage mode="signUp" />,
+      },
+      {
+        path: "/browse",
+        element: <Browse />,
+      },
+      {
+        path: "/",
+        index: true,
+        element: <div className="text-white h-screen bg-black">Loading...</div>,
+      },
     ],
-    errorElement: <ErrorPage />
-  }
+    errorElement: <ErrorPage />,
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(

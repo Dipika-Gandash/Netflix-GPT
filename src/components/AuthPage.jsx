@@ -4,8 +4,12 @@ import { validateForm } from "../utils/Validation";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import Body from "./Body.jsx"
 
 const AuthPage = ({ mode }) => {
   const isSignIn = mode === "signIn";
@@ -13,6 +17,8 @@ const AuthPage = ({ mode }) => {
   const email = useRef("");
   const password = useRef("");
   const [errorMessage, setErrorMessage] = useState({});
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setErrorMessage({});
@@ -40,15 +46,26 @@ const AuthPage = ({ mode }) => {
         email.current.value,
         password.current.value
       )
-        .then((userCredential) => {
+        .then(async (userCredential) => {
           const user = userCredential.user;
+
+          await updateProfile(user, {
+            displayName: name.current.value,
+          });
+
+          await auth.currentUser.reload();
+          dispatch(
+            addUser({
+              uid: auth.currentUser.uid,
+              email: auth.currentUser.email,
+              name: auth.currentUser.displayName,
+            })
+          );
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessageText = error.message;
-        setErrorMessage((prev) => ({
+          setErrorMessage((prev) => ({
             ...prev,
-            firebase: errorCode + " - " + errorMessageText.replace("Firebase:", "").trim(),
+            firebase: error.message.replace("Firebase:", "").trim(),
           }));
         });
     } else {
@@ -59,19 +76,27 @@ const AuthPage = ({ mode }) => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
+          dispatch(
+            addUser({
+              uid: user.uid,
+              email: user.email,
+              name: user.displayName, // Retrieves the display name from the user object
+            })
+          );
         })
         .catch((error) => {
-          const errorCode = error.code;
           const errorMessageText = error.message;
-        setErrorMessage((prev) => ({
+          setErrorMessage((prev) => ({
             ...prev,
-            firebase: errorCode + " - " + errorMessageText.replace("Firebase:", "").trim(),
+            firebase: errorMessageText.replace("Firebase:", "").trim(),
           }));
         });
     }
   };
 
   return (
+    <div>
+      <Body />
     <div
       className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
                         w-[350px] p-6 bg-black/80 rounded-lg text-white"
@@ -128,7 +153,9 @@ const AuthPage = ({ mode }) => {
             {isSignIn ? "Sign In" : "Sign Up"}
           </button>
           {errorMessage.firebase && (
-            <p className="text-red-500 text-bold mt-1">{errorMessage.firebase}</p>
+            <p className="text-red-500 text-bold mt-1">
+              {errorMessage.firebase}
+            </p>
           )}
         </div>
 
@@ -142,6 +169,7 @@ const AuthPage = ({ mode }) => {
           </p>
         )}
       </form>
+    </div>
     </div>
   );
 };
