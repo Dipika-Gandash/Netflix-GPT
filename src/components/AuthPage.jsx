@@ -80,7 +80,7 @@ const AuthPage = ({ mode }) => {
             addUser({
               uid: user.uid,
               email: user.email,
-              name: user.displayName, // Retrieves the display name from the user object
+              name: user.displayName, 
             })
           );
         })

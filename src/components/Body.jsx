@@ -1,5 +1,7 @@
 import bg from "../assets/background_image.jpg";
 import Header from "./Header";
+import React from "react"
+
 const Body = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden bg-linear-to-b from black">
