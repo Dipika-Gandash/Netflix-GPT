@@ -4,13 +4,12 @@ import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
-
   useNowPlayingMovies();
 
   return (
-    <div className="relative w-full h-screen bg-[rgb(20,20,20)]">
+    <div className="relative h-screen bg-[rgb(20,20,20)]">
       <div
-        className="absolute inset-0"
+        className="absolute"
         style={{
           background:
             "radial-gradient(ellipse at center, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.8) 90%)",

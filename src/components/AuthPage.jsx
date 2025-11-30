@@ -17,12 +17,10 @@ const AuthPage = ({ mode }) => {
   const email = useRef("");
   const password = useRef("");
   const [errorMessage, setErrorMessage] = useState({});
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     setErrorMessage({});
-
     if (name.current) name.current.value = "";
     if (email.current) email.current.value = "";
     if (password.current) password.current.value = "";
