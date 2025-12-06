@@ -7,7 +7,7 @@ const Browse = () => {
   useNowPlayingMovies();
 
   return (
-    <div className="relative h-screen bg-[rgb(20,20,20)]">
+    <div className="relative h-screen bg-[rgb(20,20,20)] z-30">
       <div
         className="absolute"
         style={{
@@ -16,12 +16,10 @@ const Browse = () => {
         }}
       />
 
-      {/* Header on top of overlay */}
       <div className="relative">
         <Header />
       </div>
 
-      {/* Page content */}
       <div className="relative z-10 text-white p-6">
         <MainContainer />
         <SecondaryContainer />

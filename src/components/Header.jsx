@@ -14,7 +14,7 @@ const Header = () => {
   }
 
   return (
-    <div className="relative z-20">
+    <div className="relative z-50">
       <img src={bg} alt="background" className="w-44 absolute top-5 left-15" />
 
       {user && (
