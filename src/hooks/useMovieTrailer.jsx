@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addTrailerVideo } from "../utils/moviesSlice";
+
 const useMovieTrailer = (id) => {
      const dispatch = useDispatch();
   const getMovieVideo = async () => {
@@ -19,7 +20,7 @@ const useMovieTrailer = (id) => {
     getMovieVideo();
   }, []);
     return (
-        <div>helo</div>
+        <></>
     )
 }
 

@@ -1,9 +1,9 @@
-
+import MoviesList from "./MoviesList.jsx"
 
 const SecondaryContainer = () => {
     return (
         <div>
-            Secondary Container
+            <MoviesList />
         </div>
     )
 }

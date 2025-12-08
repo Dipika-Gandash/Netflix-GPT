@@ -7,23 +7,10 @@ const Browse = () => {
   useNowPlayingMovies();
 
   return (
-    <div className="relative h-screen bg-[rgb(20,20,20)] z-30">
-      <div
-        className="absolute"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.8) 90%)",
-        }}
-      />
-
-      <div className="relative">
+    <div className="relative min-h-screen z-30">
         <Header />
-      </div>
-
-      <div className="relative z-10 text-white p-6">
         <MainContainer />
-        <SecondaryContainer />
-      </div>
+       <SecondaryContainer />
     </div>
   );
 };
