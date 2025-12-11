@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <div className="fixed top-0 left-0 w-full z-50 
       bg-gradient-to-b from-black/80 via-black/40 to-transparent
-      p-4">
+      px-10 py-6">
       <img src={bg} alt="background" className="w-44 absolute top-5 left-16" />
 
       {user && (
