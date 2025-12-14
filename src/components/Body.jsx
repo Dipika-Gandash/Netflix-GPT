@@ -5,7 +5,8 @@ import React from "react"
 const Body = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden bg-linear-to-b from black">
-      <img src={bg} alt="background-image" className="" />
+      <img src={bg} alt="background-image" className="absolute inset-0" />
+        <div className="absolute inset-0 bg-black/50"></div>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
