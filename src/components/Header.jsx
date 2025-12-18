@@ -4,7 +4,7 @@ import { auth } from "../utils/firebase";
 import { useState } from "react";
 import { signOut } from "firebase/auth";
 import defaultProfile from "../assets/defaultProfile.png";
-import { toggleGPTSearchView } from "../utils/gptSlice.js";
+import { toggleGeminiSearchView } from "../utils/geminiSlice.js";
 import { useDispatch } from "react-redux";
 import { SUPPORTED_LANGUAGES } from "../utils/constants.js";
 import { changeLanguage } from "../utils/configSlice.js";
@@ -18,11 +18,11 @@ const Header = () => {
     signOut(auth).catch(console.log);
   };
 
-  const handleGPTSearchClick = () => {
-    dispatch(toggleGPTSearchView());
+  const handleGeminiSearchClick = () => {
+    dispatch(toggleGeminiSearchView());
   };
 
-  const showGPTSearch = useSelector((store) => store.gpt.showGPTSearch);
+  const showGeminiSearch = useSelector((store) => store.gemini.showGeminiSearch);
   const selectedLang = useSelector((store) => store.config.lang);
 
   return (
@@ -35,7 +35,7 @@ const Header = () => {
 
       {user && (
         <div className="absolute top-5 right-10 flex items-center gap-4 z-50">
-          {showGPTSearch && (
+          {showGeminiSearch && (
             <select
               className="bg-black text-white px-3 py-2 rounded-md border border-gray-500 cursor-pointer"
               onChange={(e) => {
@@ -52,10 +52,10 @@ const Header = () => {
           )}
 
           <button
-            onClick={handleGPTSearchClick}
+            onClick={handleGeminiSearchClick}
             className="px-4 py-2 bg-red-700 text-white font-semibold rounded-md hover:bg-red-800 transition cursor-pointer"
           >
-            {showGPTSearch ? "Home Page" : "GPT Search"}
+            {showGeminiSearch ? "Home Page" : "AI Movie Search"}
           </button>
 
           <img

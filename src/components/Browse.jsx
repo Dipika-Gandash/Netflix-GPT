@@ -11,7 +11,7 @@ import {
 import Header from "./Header";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
-import GptSearchPage from "./GptSearchPage";
+import GeminiSearchPage from "./GeminiSearchPage";
 import { useSelector } from "react-redux";
 
 const Browse = () => {
@@ -45,13 +45,13 @@ const Browse = () => {
     addAnimation
   );
 
-  const showGPTSearch = useSelector((store) => store.gpt.showGPTSearch);
+  const showGeminiSearch = useSelector((store) => store.gemini.showGeminiSearch);
 
   return (
     <div className="relative bg-gray-900">
       <Header />
-      {showGPTSearch ? (
-        <GptSearchPage />
+      {showGeminiSearch ? (
+        <GeminiSearchPage />
       ) : (
         <>
           <MainContainer />
