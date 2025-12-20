@@ -49,7 +49,7 @@ const Browse = () => {
   const showGeminiSearch = useSelector((store) => store.gemini.showGeminiSearch);
 
   return (
-    <div className="relative bg-gray-900 h-screen">
+    <div className="relative bg-gray-900 min-h-screen">
       <Header />
       {showGeminiSearch ? (
         <GeminiSearchPage />
@@ -60,6 +60,7 @@ const Browse = () => {
            <Footer />
         </>
       )}
+      
      
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import lang from "../utils/languageConstants";
 import { useSelector, useDispatch } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
@@ -6,8 +6,11 @@ import { addGeminiMovieResults } from "../utils/geminiSlice";
 
 const GeminiSearchBar = () => {
   const langKey = useSelector((store) => store.config.lang);
-  const searchText = useRef(null);
+  const [searchText, setSearchText] = useState("");
   const dispatch = useDispatch();
+  const [error, setError] = useState(null);
+  const [isLoading , setIsLoading] = useState(false);
+  const [lastQuery, setLastQuery] = useState("");
 
   const fetchMovieFromTMDBByTitle = async (movieTitle) => {
     const res = await fetch(
@@ -20,8 +23,22 @@ const GeminiSearchBar = () => {
   };
 
   const handleGeminiMovieSearch = async () => {
+    const currentQuery = searchText.trim();
+    if(currentQuery === "") {
+      setError("Please enter a movie name to search.")
+      return ;
+    }
+
+   if (currentQuery.toLowerCase() === lastQuery.toLowerCase()) {
+    setError("You already searched for this");
+    return;
+  }
+
     try {
-      const userPrompt = `Act as a movie recommendation system. User input: "${searchText.current.value}". Rules: Recommend exactly 7 movies, Only movie names, Comma-separated, No extra text.`;
+      setError(null);
+      setIsLoading(true);
+      setLastQuery(currentQuery);
+      const userPrompt = `Act as a movie recommendation system. User input: "${searchText}". Rules: Recommend exactly 7 movies, Only movie names, Comma-separated, No extra text.`;
       
       const res = await fetch("http://localhost:5000/api/gemini", {
         method: "POST",
@@ -44,31 +61,57 @@ const GeminiSearchBar = () => {
       }));
 
     } catch (error) {
-      console.error("Movie search failed:", error.message);
+      setError("Failed to fetch movie recommendations. Please try again.")
+      setLastQuery("");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="w-full flex justify-center mb-6">
-      <form
-        className="flex gap-3 bg-black/90 p-4 rounded-lg w-11/12 md:w-1/2 max-w-2xl"
-        onSubmit={(e) => e.preventDefault()}
-      >
-        <input
-          type="text"
-          placeholder={lang[langKey].placeholder}
-          className="flex-1 px-4 py-3 rounded-md text-white bg-gray-800 outline-none"
-          ref={searchText}
-        />
-        <button
-          type="submit"
-          className="bg-red-600 hover:bg-red-700 px-6 py-3 text-white font-semibold rounded-md cursor-pointer"
-          onClick={handleGeminiMovieSearch}
-        >
-          {lang[langKey].search}
-        </button>
-      </form>
-    </div>
+    <div className="w-full flex justify-center mb-6 -mt-12">
+  <div className="w-11/12 md:w-1/2 max-w-2xl">
+    
+    {error && (
+      <p className="mb-2 text-red-500 text-md text-center">
+        {error}
+      </p>
+    )}
+
+    <form
+      className="flex gap-3 bg-black/90 p-4 rounded-lg"
+      onSubmit={(e) => {e.preventDefault();
+        handleGeminiMovieSearch();}
+      }
+
+    >
+      <input
+        type="text"
+        placeholder={lang[langKey].placeholder}
+        className="flex-1 px-4 py-3 rounded-md text-white bg-gray-800 outline-none"
+        value={searchText}
+        onChange={(e) => setSearchText(e.target.value)}
+      />
+     <button
+  type="submit"
+  disabled={
+    isLoading ||
+    !searchText.trim()
+  }
+  className={`px-6 py-3 font-semibold rounded-md text-white
+    ${
+      isLoading
+        ? "bg-gray-600 cursor-not-allowed"
+        : "bg-red-600 hover:bg-red-700"
+    }`}
+>
+  {isLoading ? "Searching..." : lang[langKey].search}
+</button>
+    </form>
+
+  </div>
+</div>
+
   );
 };
 
