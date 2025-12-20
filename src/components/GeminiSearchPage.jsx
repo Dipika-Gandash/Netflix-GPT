@@ -5,9 +5,9 @@ import bg from "../assets/background_image.jpg";
 
 const GeminiSearchPage = () => {
   return (
-    <div className='relative min-h-screen w-full'>
+    <div className='relative w-full'>
       
-      <div className="fixed inset-0 z-0">
+      <div className="fixed inset-0 z-0 ">
         <img
           src={bg}
           alt="background"

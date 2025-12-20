@@ -13,6 +13,7 @@ import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import GeminiSearchPage from "./GeminiSearchPage";
 import { useSelector } from "react-redux";
+import Footer from "./Footer";
 
 const Browse = () => {
   useFetchMovies(
@@ -48,7 +49,7 @@ const Browse = () => {
   const showGeminiSearch = useSelector((store) => store.gemini.showGeminiSearch);
 
   return (
-    <div className="relative bg-gray-900">
+    <div className="relative bg-gray-900 h-screen">
       <Header />
       {showGeminiSearch ? (
         <GeminiSearchPage />
@@ -56,8 +57,10 @@ const Browse = () => {
         <>
           <MainContainer />
           <SecondaryContainer />
+           <Footer />
         </>
       )}
+     
     </div>
   );
 };

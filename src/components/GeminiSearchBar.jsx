@@ -49,7 +49,7 @@ const GeminiSearchBar = () => {
   };
 
   return (
-    <div className="w-full flex justify-center mb-10">
+    <div className="w-full flex justify-center mb-6">
       <form
         className="flex gap-3 bg-black/90 p-4 rounded-lg w-11/12 md:w-1/2 max-w-2xl"
         onSubmit={(e) => e.preventDefault()}

@@ -1,11 +1,12 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import MovieCard from './MovieCard';
+import ShimmerMovieCard from './ShimmerMovieCard';
 
 const GeminiMovieSuggestion = () => {
   const { movieName, movieResults } = useSelector((store) => store.gemini)
 
-  if (!movieName || movieName.length === 0) return null
+  if (!movieName || movieName.length === 0) return <ShimmerMovieCard />
 
   return (
     <div className="px-12 w-full">
