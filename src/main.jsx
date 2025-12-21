@@ -26,11 +26,6 @@ const Router = createBrowserRouter([
         path: "/browse",
         element: <Browse />,
       },
-      {
-        path: "/",
-        index: true,
-        element: <div className="text-white h-screen bg-black">Loading...</div>,
-      },
     ],
     errorElement: <ErrorPage />,
   },
