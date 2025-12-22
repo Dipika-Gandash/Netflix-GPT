@@ -46,7 +46,6 @@ const Header = () => {
         {showGeminiSearch && (
           <select
             className="
-              hidden sm:block
               bg-black text-white px-2 py-1
               rounded-md border border-gray-500
             "
