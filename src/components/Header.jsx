@@ -27,69 +27,89 @@ const Header = () => {
 
   return (
     <div
-      className="fixed top-0 left-0 w-full z-50 
-      bg-gradient-to-b from-black/80 via-black/40 to-transparent
-      px-10 py-6"
+  className="
+    fixed top-0 left-0 w-full z-50
+    bg-gradient-to-b from-black/80 via-black/40 to-transparent
+    px-4 sm:px-6 md:px-10
+    py-3 sm:py-4 md:py-6
+  "
+>
+  <div className="flex items-center justify-between">
+    <img
+      src={bg}
+      alt="Netflix Nova"
+      className="w-28 sm:w-32 md:w-40 lg:w-48"
+    />
+
+    {user && (
+      <div className="flex items-center gap-2 sm:gap-4">
+        {showGeminiSearch && (
+          <select
+            className="
+              hidden sm:block
+              bg-black text-white px-2 py-1
+              rounded-md border border-gray-500
+            "
+            value={selectedLang}
+            onChange={(e) => dispatch(changeLanguage(e.target.value))}
+          >
+            {SUPPORTED_LANGUAGES.map((lang) => (
+              <option key={lang.name} value={lang.identifier}>
+                {lang.name}
+              </option>
+            ))}
+          </select>
+        )}
+
+        <button
+          onClick={handleGeminiSearchClick}
+          className="
+            text-md sm:text-base
+            px-3 py-1.5 sm:px-4 sm:py-2
+            bg-red-700 text-white font-semibold
+            rounded-md hover:bg-red-800 transition
+          "
+        >
+          {showGeminiSearch ? "Home" : "AI Search"}
+        </button>
+
+        <img
+          src={defaultProfile}
+          alt="Profile"
+          className="w-9 h-9 sm:w-10 sm:h-10 rounded-full cursor-pointer"
+          onClick={() => setOpenMenu(!openMenu)}
+        />
+      </div>
+    )}
+  </div>
+
+  {openMenu && user && (
+    <div
+      className="
+        absolute right-4 sm:right-6 md:right-10
+        top-16 sm:top-20
+        bg-gray-900 text-white
+        w-56 p-4 rounded-lg shadow-lg
+      "
     >
-      <img src={bg} alt="background" className="w-48 absolute top-5 left-16" />
-
-      {user && (
-        <div className="absolute top-5 right-10 flex items-center gap-4 z-50">
-          {showGeminiSearch && (
-            <select
-              className="bg-black text-white px-3 py-2 rounded-md border border-gray-500 cursor-pointer"
-              onChange={(e) => {
-                dispatch(changeLanguage(e.target.value));
-              }}
-              value={selectedLang}
-            >
-              {SUPPORTED_LANGUAGES.map((lang) => (
-                <option key={lang.name} value={lang.identifier}>
-                  {lang.name}
-                </option>
-              ))}
-            </select>
-          )}
-
-          <button
-            onClick={handleGeminiSearchClick}
-            className="px-4 py-2 bg-red-700 text-white font-semibold rounded-md hover:bg-red-800 transition cursor-pointer"
-          >
-            {showGeminiSearch ? "Home Page" : "AI Movie Search"}
-          </button>
-
-          <img
-            src={defaultProfile}
-            alt="default Profile"
-            className="w-12 h-12 rounded-full cursor-pointer"
-            onClick={() => setOpenMenu(!openMenu)}
-          />
+      <div className="flex items-center gap-3 mb-4">
+        <img src={defaultProfile} className="w-10 h-10 rounded-full" />
+        <div>
+          <p className="font-semibold">{user.name}</p>
+          <p className="text-gray-400 text-sm">{user.email}</p>
         </div>
-      )}
+      </div>
 
-      {openMenu && user && (
-        <div className="absolute right-10 top-20 bg-gray-900 text-white w-52 p-4 rounded-lg shadow-lg z-20">
-          <div className="flex items-center gap-3 mb-4">
-            <img
-              src={defaultProfile}
-              alt="user"
-              className="w-10 h-10 rounded-full"
-            />
-            <div>
-              <p className="font-semibold">{user.name}</p>
-              <p className="text-gray-400 text-sm">{user.email}</p>
-            </div>
-          </div>
-
-          <button
-            onClick={handleSignOut}
-            className="w-full bg-red-600 hover:bg-red-700 transition p-2 rounded"
-          >
-            Sign Out
-          </button>
-        </div>
-      )}
+      <button
+        onClick={handleSignOut}
+        className="w-full bg-red-600 hover:bg-red-700 p-2 rounded"
+      >
+        Sign Out
+      </button>
     </div>
+  )}
+</div>
+
   );
 };
 

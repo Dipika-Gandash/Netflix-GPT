@@ -16,6 +16,7 @@ import { useSelector } from "react-redux";
 import Footer from "./Footer";
 
 const Browse = () => {
+  
   useFetchMovies(
     "https://api.themoviedb.org/3/movie/now_playing?page=1",
     addNowPlayingMovies

@@ -4,9 +4,13 @@ import React from "react"
 
 const Body = () => {
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-linear-to-b from black">
-      <img src={bg} alt="background-image" className="absolute inset-0" />
-        <div className="absolute inset-0 bg-black/50"></div>
+     <div
+      className="relative w-full min-h-[100svh] bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${bg})` }}
+    >
+      {/* dark overlay */}
+      <div className="absolute inset-0 bg-black/50"></div>
+
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -14,6 +18,7 @@ const Body = () => {
             "radial-gradient(ellipse at center, rgba(0,0,0,0.0) 35%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0.95) 100%)",
         }}
       />
+
       <Header />
     </div>
   );

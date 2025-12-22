@@ -17,5 +17,3 @@ const useFetchMovies = (url, action) => {
 };
 
 export default useFetchMovies;
-
-// "https://api.themoviedb.org/3/movie/now_playing?page=1",

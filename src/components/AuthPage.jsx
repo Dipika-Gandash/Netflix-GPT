@@ -96,10 +96,10 @@ const AuthPage = ({ mode }) => {
     <div>
       <Body />
     <div
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-                        w-[350px] p-6 bg-black/80 rounded-lg text-white"
+      className="absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 
+                        md:w-[350px] sm:w-[270px] p-6 bg-black/80 rounded-lg text-white"
     >
-      <h1 className="text-4xl font-bold mb-6 py-3">
+      <h1 className="md:text-4xl sm:text-3xl text-3xl font-bold mb-6 py-3 ">
         {isSignIn ? "Sign In" : "Sign Up"}
       </h1>
 
