@@ -1,10 +1,10 @@
-🎬 Netflix-AI (Netflix Clone with AI Movie Search)
+### 🎬 Netflix-AI (Netflix Clone with AI Movie Search)
 
 Netflix-AI is a fully responsive Netflix-inspired web application built using React.
 The app allows users to authenticate, browse movies, watch trailers in the background, and get AI-powered movie recommendations using the Gemini API.
 
 
-📌 About the Project
+## 📌 About the Project
 
 : Movie data is fetched from TMDB API
 
@@ -20,151 +20,148 @@ The app allows users to authenticate, browse movies, watch trailers in the backg
 
 : Application-wide state is managed using Redux
 
-✨ Features
+## ✨ Features
 
-🔐 Authentication
+# 🔐 Authentication
 
- Sign In / Sign Up using Firebase
+1.Sign In / Sign Up using Firebase
 
-Secure authentication flow
+2.Secure authentication flow
 
-Logout functionality
+3.Logout functionality
 
-User data stored and managed in Redux
+4.User data stored and managed in Redux
 
-🎥 Netflix-Style UI
+# 🎥 Netflix-Style UI
 
-Full-screen video background with YouTube trailers
+1.Full-screen video background with YouTube trailers
 
-Gradient overlays for cinematic effect
+2.Gradient overlays for cinematic effect
 
-Sticky transparent header
+3.Sticky transparent header
 
-Clean and modern UI inspired by Netflix
+4.Clean and modern UI inspired by Netflix
 
 
-🎞️ Movie Browsing
+# 🎞️ Movie Browsing
 
-Fetches movies from TMDB API
+1.Fetches movies from TMDB API
 
-Displays movie lists in horizontal scrollable rows
+2.Displays movie lists in horizontal scrollable rows
 
-Optimized rendering using reusable components
+3.Optimized rendering using reusable components
 
-🤖 AI Movie Search
+# 🤖 AI Movie Search
 
-AI-powered recommendations using Gemini API
+1.AI-powered recommendations using Gemini API
 
-User input → Gemini suggests movies
+2.User input → Gemini suggests movies
 
-Suggested movies are searched on TMDB
+3.Suggested movies are searched on TMDB
 
-Duplicate searches prevented
+4.Duplicate searches prevented
 
-Proper loading and error handling
+5.Proper loading and error handling
 
-📱 Fully Responsive
+# 📱 Fully Responsive
 
-Works smoothly on mobile, tablet, and desktop
+1.Works smoothly on mobile, tablet, and desktop
 
-Mobile-level UI optimized
+2.Mobile-level UI optimized
 
-Background video and layout do not break on small screens
+3.Background video and layout do not break on small screens
 
-Responsive text and spacing adjustments
+4.Responsive text and spacing adjustments
 
-🌍 Multi-Language Support
+# 🌍 Multi-Language Support
 
-Language switching using Redux
+1.Language switching using Redux on AI search Page
 
-Dynamically updates UI text based on selected language
+2.Dynamically updates UI text based on selected language
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 
-Frontend
+# Frontend
 
-React.js
+1.React.js
 
-Tailwind CSS
+2.Tailwind CSS
 
-Redux Toolkit
+3.Redux Toolkit
 
-React Router
+4.React Router
 
-Backend
+ # Backend
 
-Node.js
+1.Node.js
 
-Express.js (used as a proxy for Gemini API)
+2.Express.js (used as a proxy for Gemini API)
 
-APIs & Services
+# APIs & Services
 
-Firebase Authentication
+1.Firebase Authentication
 
-TMDB API
+2.TMDB API
 
-Google Gemini API
+3.Google Gemini API
 
-YouTube Embed API (for trailers)
+4.YouTube Embed API (for trailers)
 
-🧠 State Management
+## 🧠 State Management
 
-Centralized state management using Redux
+1.Centralized state management using Redux
 
-Separate slices for:
+2.Separate slices for:
 
-User authentication
+  a.User authentication
 
-Movies and trailers
+  b.Movies and trailers
 
-Gemini AI search results
+  c.Gemini AI search results
 
-App configuration (language)
-
+  d.App configuration (language)
 
 
 ## Gemini API Proxy (Backend)
 
-To securely integrate the Gemini API, a custom backend proxy was built using Node.js and Express.
+1.To securely integrate the Gemini API, a custom backend proxy was built using Node.js and Express.
 
-Why this proxy is used:
+2.Why this proxy is used:
 
-Prevents exposing Gemini API keys on the frontend
+   --> Prevents exposing Gemini API keys on the frontend
 
-Handles AI requests securely
+   --> Handles AI requests securely
 
-Avoids CORS issues
+  --> Avoids CORS issues
 
-Acts as a middleware between frontend and Gemini API
+  -->Acts as a middleware between frontend and Gemini API
 
-How it works:
+3. How it works:
 
-Frontend sends user prompt to the proxy server
+  --> Frontend sends user prompt to the proxy server
 
-Proxy forwards the request to Gemini API
+  --> Proxy forwards the request to Gemini API
 
-Gemini returns movie recommendations
+  --> Gemini returns movie recommendations
 
-Proxy sends the response back to the frontend
+  --> Proxy sends the response back to the frontend
 
-Frontend fetches movie details from TMDB
+  --> Frontend fetches movie details from TMDB
 
 🔗 https://github.com/Dipika-Gandash/movie-recommendation-api
 
 
-📸 Screenshots
-
 ## Screenshots
  ### Home Pgae
- ![Home Page](assets/ScreenShot_HomePage.png)
+ ![Home Page](src/assets/ScreenShot_HomePage.png)
 
  ### AI Search Page
- ![Ai Search Page](assets/ScreenShot_AiSearchPage.png)
+ ![Ai Search Page](src/assets/ScreenShot_AiSearchPage.png)
 
  ### Sign In Page (Mobile View)
- ![Sign In Page](assets/ScreenShot_SignInPage.png)
+ ![Sign In Page](src/assets/ScreenShot_SignInPage.png)
 
  ### Sign Up Page (Mobile View)
- ![Sign Up Page](assets/ScreenShot_SignUpPage.png)
+ ![Sign Up Page](src/assets/ScreenShot_SignUpPage.png)
 
  
