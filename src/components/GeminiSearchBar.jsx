@@ -40,7 +40,7 @@ const GeminiSearchBar = () => {
       setLastQuery(currentQuery);
       const userPrompt = `Act as a movie recommendation system. User input: "${searchText}". Rules: Recommend exactly 7 movies, Only movie names, Comma-separated, No extra text.`;
       
-      const res = await fetch("http://localhost:5000/api/gemini", {
+      const res = await fetch("https://movie-recommendation-api-uzy2.onrender.com/api/gemini", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt: userPrompt }),
