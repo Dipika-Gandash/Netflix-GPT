@@ -1,10 +1,10 @@
-### 🎬 Netflix-AI (Netflix Clone with AI Movie Search)
+## Netflix-AI (Netflix Clone with AI Movie Search)
 
 Netflix-AI is a fully responsive Netflix-inspired web application built using React.
 The app allows users to authenticate, browse movies, watch trailers in the background, and get AI-powered movie recommendations using the Gemini API.
 
 
-## 📌 About the Project
+##  About the Project
 
 : Movie data is fetched from TMDB API
 
@@ -20,9 +20,9 @@ The app allows users to authenticate, browse movies, watch trailers in the backg
 
 : Application-wide state is managed using Redux
 
-## ✨ Features
+##  Features
 
-# 🔐 Authentication
+### 🔐 Authentication
 
 1.Sign In / Sign Up using Firebase
 
@@ -32,7 +32,7 @@ The app allows users to authenticate, browse movies, watch trailers in the backg
 
 4.User data stored and managed in Redux
 
-# 🎥 Netflix-Style UI
+### 🎥 Netflix-Style UI
 
 1.Full-screen video background with YouTube trailers
 
@@ -43,7 +43,7 @@ The app allows users to authenticate, browse movies, watch trailers in the backg
 4.Clean and modern UI inspired by Netflix
 
 
-# 🎞️ Movie Browsing
+### 🎞️ Movie Browsing
 
 1.Fetches movies from TMDB API
 
@@ -51,7 +51,7 @@ The app allows users to authenticate, browse movies, watch trailers in the backg
 
 3.Optimized rendering using reusable components
 
-# 🤖 AI Movie Search
+### 🤖 AI Movie Search
 
 1.AI-powered recommendations using Gemini API
 
@@ -63,7 +63,7 @@ The app allows users to authenticate, browse movies, watch trailers in the backg
 
 5.Proper loading and error handling
 
-# 📱 Fully Responsive
+### 📱 Fully Responsive
 
 1.Works smoothly on mobile, tablet, and desktop
 
@@ -73,15 +73,15 @@ The app allows users to authenticate, browse movies, watch trailers in the backg
 
 4.Responsive text and spacing adjustments
 
-# 🌍 Multi-Language Support
+### 🌍 Multi-Language Support
 
 1.Language switching using Redux on AI search Page
 
 2.Dynamically updates UI text based on selected language
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
-# Frontend
+### Frontend
 
 1.React.js
 
@@ -91,13 +91,13 @@ The app allows users to authenticate, browse movies, watch trailers in the backg
 
 4.React Router
 
- # Backend
+ ### Backend
 
 1.Node.js
 
 2.Express.js (used as a proxy for Gemini API)
 
-# APIs & Services
+### APIs & Services
 
 1.Firebase Authentication
 
@@ -107,7 +107,7 @@ The app allows users to authenticate, browse movies, watch trailers in the backg
 
 4.YouTube Embed API (for trailers)
 
-## 🧠 State Management
+### 🧠 State Management
 
 1.Centralized state management using Redux
 
