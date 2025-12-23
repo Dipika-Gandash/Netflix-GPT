@@ -153,15 +153,15 @@ The app allows users to authenticate, browse movies, watch trailers in the backg
 
 ## Screenshots
  ### Home Pgae
- ![Home Page](./src/assets/ScreenShot_HomePage.png)
+ ![Home Page](./src/assets/homePage.png)
 
  ### AI Search Page
- ![Ai Search Page](./src/assets/Screenshot_AiSearchPage.png)
+ ![Ai Search Page](./src/assets/aiSearchPage.png)
 
  ### Sign In Page (Mobile View)
- ![Sign In Page](./src/assets/ScreenShot_SignInPage.png)
+ ![Sign In Page](./src/assets/signInPage.png)
 
  ### Sign Up Page (Mobile View)
- ![Sign Up Page](./src/assets/ScreenShot_SignUpPage.png)
+ ![Sign Up Page](./src/assets/signUpPage.png)
 
  
